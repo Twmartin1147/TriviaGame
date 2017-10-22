@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Da Quizzz</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Random Quiz!</h2>
+    <p>In this quiz, you will have to answer 10 questions randomly generated! You will have a random difficulty so be prepared...</p>
+    <p>Instructions: You must type in the answer you believe to be right verbatum. Anymispelling of the answers will count your answer wrong. Enjoy!</p>
+      <div id="outcome">
+      	<p id="wins"></p><p id="losses"></p>
+      </div>
+    	<div>
+            <h2>Question 1</h2>
+			 <p id="q1"></p>
+            <h2>Choices</h2> 
+             <p id="mc1"></p>
+             <p id="mc2"></p>
+             <p id="mc3"></p>
+             <p id="mc4"></p>
+             <button id="btn1" class="btn-info">Press me to guess!</button>
+    	</div>
+        <div>
+            <h2>Question 2</h2>
+             <p id="q2"></p>
+            <h2>Choices</h2> 
+             <p id="mc5"></p>
+             <p id="mc6"></p>
+             <p id="mc7"></p>
+             <p id="mc8"></p>
+             <button id="btn2" class="btn-info">Press me to guess!</button>
+        </div> 
+        <div>
+            <h2>Question 3</h2>
+             <p id="q3"></p>
+            <h2>Choices</h2> 
+             <p id="mc9"></p>
+             <p id="mc10"></p>
+             <p id="mc11"></p>
+             <p id="mc12"></p>
+             <button id="btn3" class="btn-info">Press me to guess!</button>
+        </div> 
+        <div>
+            <h2>Question 4</h2>
+             <p id="q4"></p>
+            <h2>Choices</h2> 
+             <p id="mc13"></p>
+             <p id="mc14"></p>
+             <p id="mc15"></p>
+             <p id="mc16"></p>
+             <button id="btn4" class="btn-info">Press me to guess!</button>
+        </div>
+        <div>
+            <h2>Question 5</h2>
+             <p id="q5"></p>
+            <h2>Choices</h2> 
+             <p id="mc17"></p>
+             <p id="mc18"></p>
+             <p id="mc19"></p>
+             <p id="mc20"></p>
+             <button id="btn5" class="btn-info">Press me to guess!</button>
+        </div><div>
+            <h2>Question 6</h2>
+             <p id="q6"></p>
+            <h2>Choices</h2> 
+             <p id="mc21"></p>
+             <p id="mc22"></p>
+             <p id="mc23"></p>
+             <p id="mc24"></p>
+             <button id="btn6" class="btn-info">Press me to guess!</button>
+        </div>
+        <div>
+            <h2>Question 7</h2>
+             <p id="q7"></p>
+            <h2>Choices</h2> 
+             <p id="mc25"></p>
+             <p id="mc26"></p>
+             <p id="mc27"></p>
+             <p id="mc28"></p>
+             <button id="btn7" class="btn-info">Press me to guess!</button>
+        </div>
+        <div>
+            <h2>Question 8</h2>
+             <p id="q8"></p>
+            <h2>Choices</h2> 
+             <p id="mc29"></p>
+             <p id="mc30"></p>
+             <p id="mc31"></p>
+             <p id="mc32"></p>
+             <button id="btn8" class="btn-info">Press me to guess!</button>
+        </div>
+        <div>
+            <h2>Question 9</h2>
+             <p id="q9"></p>
+            <h2>Choices</h2> 
+             <p id="mc33"></p>
+             <p id="mc34"></p>
+             <p id="mc35"></p>
+             <p id="mc36"></p>
+             <button id="btn9" class="btn-info">Press me to guess!</button>
+        </div>
+        <div>
+            <h2>Question 10</h2>
+             <p id="q10"></p>
+            <h2>Choices</h2> 
+             <p id="mc37"></p>
+             <p id="mc38"></p>
+             <p id="mc39"></p>
+             <p id="mc40"></p>
+             <button id="btn10" class="btn-info">Press me to guess!</button>
+        </div>  
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  	var queryURL = "https://opentdb.com/api.php?amount=10&type=multiple"
+    var right = 0
+    var wrong = 0
+     $.ajax({
+     	url: queryURL,
+     	method: "GET"
+     }).done(function(response) {
+     	console.log(response)
+     	console.log(response.results[0])
+     	$('#q1').html(response.results[0].question)
+        var multipleChoice1 = response.results[0].incorrect_answers[0]
+        var multipleChoice2 = response.results[0].incorrect_answers[1]
+        var multipleChoice3 = response.results[0].incorrect_answers[2]
+        var correctAnswer = response.results[0].correct_answer
+        $('#mc1').html(correctAnswer)
+        $('#mc2').html(multipleChoice2)
+        $('#mc3').html(multipleChoice1)
+        $('#mc4').html(multipleChoice3)
+        $('#btn1').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    //var queryURL = "https://opentdb.com/api.php?amount=10&category=20&type=multiple"
+     $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[1])
+        $('#q2').html(response.results[1].question)
+        var multipleChoice1 = response.results[1].incorrect_answers[0]
+        var multipleChoice2 = response.results[1].incorrect_answers[1]
+        var multipleChoice3 = response.results[1].incorrect_answers[2]
+        var correctAnswer = response.results[1].correct_answer
+        $('#mc7').html(correctAnswer)
+        $('#mc8').html(multipleChoice2)
+        $('#mc5').html(multipleChoice1)
+        $('#mc6').html(multipleChoice3)
+        $('#btn2').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[2])
+        $('#q3').html(response.results[2].question)
+        var multipleChoice1 = response.results[2].incorrect_answers[0]
+        var multipleChoice2 = response.results[2].incorrect_answers[1]
+        var multipleChoice3 = response.results[2].incorrect_answers[2]
+        var correctAnswer = response.results[2].correct_answer
+        $('#mc9').html(correctAnswer)
+        $('#mc12').html(multipleChoice2)
+        $('#mc11').html(multipleChoice1)
+        $('#mc10').html(multipleChoice3)
+        $('#btn3').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[3])
+        $('#q4').html(response.results[3].question)
+        var multipleChoice1 = response.results[3].incorrect_answers[0]
+        var multipleChoice2 = response.results[3].incorrect_answers[1]
+        var multipleChoice3 = response.results[3].incorrect_answers[2]
+        var correctAnswer = response.results[3].correct_answer
+        $('#mc14').html(correctAnswer)
+        $('#mc15').html(multipleChoice2)
+        $('#mc13').html(multipleChoice1)
+        $('#mc16').html(multipleChoice3)
+        $('#btn4').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[4])
+        $('#q5').html(response.results[4].question)
+        var multipleChoice1 = response.results[4].incorrect_answers[0]
+        var multipleChoice2 = response.results[4].incorrect_answers[1]
+        var multipleChoice3 = response.results[4].incorrect_answers[2]
+        var correctAnswer = response.results[4].correct_answer
+        $('#mc20').html(correctAnswer)
+        $('#mc19').html(multipleChoice2)
+        $('#mc18').html(multipleChoice1)
+        $('#mc17').html(multipleChoice3)
+        $('#btn5').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[5])
+        $('#q6').html(response.results[5].question)
+        var multipleChoice1 = response.results[5].incorrect_answers[0]
+        var multipleChoice2 = response.results[5].incorrect_answers[1]
+        var multipleChoice3 = response.results[5].incorrect_answers[2]
+        var correctAnswer = response.results[5].correct_answer
+        $('#mc21').html(correctAnswer)
+        $('#mc22').html(multipleChoice2)
+        $('#mc23').html(multipleChoice1)
+        $('#mc24').html(multipleChoice3)
+        $('#btn6').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Rights: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[6])
+        $('#q7').html(response.results[6].question)
+        var multipleChoice1 = response.results[6].incorrect_answers[0]
+        var multipleChoice2 = response.results[6].incorrect_answers[1]
+        var multipleChoice3 = response.results[6].incorrect_answers[2]
+        var correctAnswer = response.results[6].correct_answer
+        $('#mc26').html(correctAnswer)
+        $('#mc27').html(multipleChoice2)
+        $('#mc25').html(multipleChoice1)
+        $('#mc28').html(multipleChoice3)
+        $('#btn7').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[7])
+        $('#q8').html(response.results[7].question)
+        var multipleChoice1 = response.results[7].incorrect_answers[0]
+        var multipleChoice2 = response.results[7].incorrect_answers[1]
+        var multipleChoice3 = response.results[7].incorrect_answers[2]
+        var correctAnswer = response.results[7].correct_answer
+        $('#mc31').html(correctAnswer)
+        $('#mc29').html(multipleChoice2)
+        $('#mc30').html(multipleChoice1)
+        $('#mc32').html(multipleChoice3)
+        $('#btn8').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[8])
+        $('#q9').html(response.results[8].question)
+        var multipleChoice1 = response.results[8].incorrect_answers[0]
+        var multipleChoice2 = response.results[8].incorrect_answers[1]
+        var multipleChoice3 = response.results[8].incorrect_answers[2]
+        var correctAnswer = response.results[8].correct_answer
+        $('#mc33').html(correctAnswer)
+        $('#mc36').html(multipleChoice2)
+        $('#mc34').html(multipleChoice1)
+        $('#mc35').html(multipleChoice3)
+        $('#btn9').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+     }).done(function(response) {
+        console.log(response)
+        console.log(response.results[9])
+        $('#q10').html(response.results[9].question)
+        var multipleChoice1 = response.results[9].incorrect_answers[0]
+        var multipleChoice2 = response.results[9].incorrect_answers[1]
+        var multipleChoice3 = response.results[9].incorrect_answers[2]
+        var correctAnswer = response.results[9].correct_answer
+        $('#mc40').html(correctAnswer)
+        $('#mc39').html(multipleChoice2)
+        $('#mc38').html(multipleChoice1)
+        $('#mc37').html(multipleChoice3)
+        $('#btn10').on("click", function(){
+        var rightAnswer = correctAnswer
+        var wrongAnswer1 = multipleChoice1
+        var wrongAnswer2 = multipleChoice2
+        var wrongAnswer3 = multipleChoice3
+        if (prompt() === correctAnswer) {
+            alert("You are correct!") 
+            right ++
+            $('#wins').html("Number Right: " + right)
+        } else {
+            alert("Sorry, but that is wrong")
+            wrong ++
+            $('#losses').html("Number Wrong: " + wrong)
+        }     
+    });
+
+    });
+
+
+
+  </script>
+
+</body>
+</html>
